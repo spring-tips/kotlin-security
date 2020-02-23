@@ -8,7 +8,7 @@ Remember, Spring Security addresses two orthagonal concerns: authentication and 
 
 DSLs are most useful not when swapping out implementations of a given type, but when describing rules or customizing behavior. So, we'll use the Spring Security DSL to customize the authorization behavior. 
 
-The following is a Spring Boot-based application that uses Spring Security. It uses the functional bean registration DSL to programatically register beans. We talked about programatic bean registration [in a _Spring Tips_ video from waaaaay back in 2017](https://spring.io/blog/2017/03/01/spring-tips-programmatic-bean-registration-in-spring-framework-5). Granted, that video demonstrated its use in Java, but the application is basically the same in Kotlin: you register a bean by wrapping it a call to the `bean` function. 
+The following is a Spring Boot-based application that uses Spring Security. I generated a new project from the [Spring Initializr](http://start.Spring.io) that uses Kotlin, and uses Spring Security and Spring Boot 2.3.M2 or later. It uses the functional bean registration DSL to programatically register beans. We talked about programatic bean registration [in a _Spring Tips_ video from waaaaay back in 2017](https://spring.io/blog/2017/03/01/spring-tips-programmatic-bean-registration-in-spring-framework-5). Granted, that video demonstrated its use in Java, but the application is basically the same in Kotlin: you register a bean by wrapping it a call to the `bean` function. 
 
 The first bean is the `InMemoryUserDetailsManager`. The second bean is a functional HTTP endpoint, `/greetings`. When an HTTP request comes in, we extract the authenticated principal from the current request, extract the name and then build a `ServerResponse` whose body will be represented by a `Map<String,String>`. 
 
@@ -71,4 +71,4 @@ fun main(args: Array<String>) {
 
 ## Conclusion 
 
-In this installment, we introduced 
+In this installment, we introduced Spring Security's new Kotlin DSL. There's more text than there is code because, and this is profound, Spring Security does a _lot_ of stuff for you, so that the surface area of the API is literally the bare minimum in customizations you want to do beyond the already sensible defaults. I hope you learned something new, and will give the Spring Security DSL a shot. 
